@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Attiq — Privacy Policy</title>
+<style>
+  :root { color-scheme: light dark; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    max-width: 720px; margin: 0 auto; padding: 32px 20px 64px;
+    line-height: 1.6; color: #1a1a1a; background: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    body { color: #e8e8e8; background: #242424; }
+    a { color: #8ab4f8; }
+  }
+  h1 { font-size: 1.7rem; margin-bottom: 0.2em; }
+  h2 { font-size: 1.15rem; margin-top: 2em; }
+  .updated { opacity: 0.7; font-size: 0.9rem; }
+  .version { opacity: 0.55; font-size: 0.8rem; }
+  ul { padding-left: 1.2em; }
+</style>
+</head>
+<body>
+<h1>Attiq Privacy Policy</h1>
+<p class="updated">Last updated: 23 July 2026</p>
+<p class="version">Version 1.1</p>
+
+<p>Attiq ("the app", "we", "us") is a personal finance tracker. This policy explains what data the app handles, where it goes, and the choices you have. By using Attiq — and in particular by creating an account — you acknowledge this policy; it applies together with our <a href="/terms">Terms of Service</a>. If you connect a bank, our <a href="/cdr-policy">CDR Policy</a> also applies, and our <a href="/security">Security</a> page describes how your data is protected. The short version: <strong>your financial data lives on your device by default, we don't run ads, we don't use tracking or analytics SDKs, and we never sell your data.</strong></p>
+
+<h2>1. Data stored on your device</h2>
+<p>Transactions, accounts, budgets, savings goals, recurring bills, and preferences are stored locally on your device. In guest mode nothing is sent to our servers and no account is required. You can erase all local data at any time from Profile &rarr; Delete All Data.</p>
+
+<h2>2. Account data (optional)</h2>
+<p>If you create an account (email/password or Google Sign-In), we store your email address, display name, and optional profile photo with our authentication provider, Supabase. Passwords are handled by Supabase and are never visible to us. Google Sign-In shares only your basic profile (name, email, avatar) as authorised by the Google consent screen.</p>
+
+<h2>3. Cloud backup &amp; sync (optional, Pro)</h2>
+<p>If you subscribe to Pro and enable cloud backup, your app data (transactions, budgets, goals, warranties) is backed up to our database (hosted by Supabase) so it can follow you across devices. Data is encrypted in transit (TLS) and at rest, and is only accessible from your signed-in account. Disabling sync or deleting your account removes this server-side copy. You can also export a <strong>fully end-to-end encrypted backup file</strong> (AES-256-GCM, protected by a password only you hold) — see our <a href="/security">Security</a> page for the details of how each type of data is protected.</p>
+
+<h2>4. Receipt scanning</h2>
+<p>Receipt scanning uses on-device text recognition (Google ML Kit running locally). Receipt photos and their contents are processed entirely on your device and are not uploaded anywhere.</p>
+
+<h2>5. Bank statement import</h2>
+<p>PDF statement import is processed on your device where possible. If you use the server-side or AI-assisted import, the statement file is transmitted securely to our server, processed to extract transactions (AI-assisted import uses Google's Gemini API for processing), returned to your device, and not stored on our servers.</p>
+
+<h2>6. Subscriptions &amp; payments</h2>
+<p>Purchases are processed by Google Play (or the Apple App Store) and managed through RevenueCat. We receive purchase status (e.g. "Pro active until date") and an anonymised purchase identifier. We never see your card number or full payment details.</p>
+
+<h2>7. Bank connections (optional, where available)</h2>
+<p>If you choose to connect a bank account, the connection is made through Basiq, an accredited data recipient under Australia's Consumer Data Right. You authorise access directly with Basiq and your bank; your banking credentials are never entered into or visible to Attiq, and access is read-only. You can revoke a bank connection at any time in the app. How we handle this data is described in full in our <a href="/cdr-policy">CDR Policy</a>.</p>
+
+<h2>8. Feedback</h2>
+<p>If you send feedback from the app, we receive your message, your app version and platform, and — only if you choose to provide it — your email address so we can reply.</p>
+
+<h2>9. Notifications</h2>
+<p>Bill reminders and smart alerts are scheduled locally on your device. We do not send marketing push notifications.</p>
+
+<h2>10. What we don't do</h2>
+<ul>
+  <li>No advertising, and no advertising identifiers.</li>
+  <li>No third-party analytics or tracking SDKs.</li>
+  <li>No selling or renting of personal data — to anyone, ever.</li>
+</ul>
+
+<h2>11. Data retention &amp; deletion</h2>
+<ul>
+  <li><strong>Local data:</strong> erase any time via Profile &rarr; Delete All Data, or by uninstalling the app.</li>
+  <li><strong>Account &amp; cloud data:</strong> delete your account from Profile &rarr; Delete Account, which permanently removes your authentication record and any cloud-synced data. You can also request deletion by emailing <a href="mailto:feedback@attiq.online">feedback@attiq.online</a> from your account email. Full instructions: <a href="/delete-account">how to delete your account and data</a>.</li>
+</ul>
+
+<h2>12. Service providers</h2>
+<p>We use a small number of processors to run the app: Supabase (authentication, database, storage), RevenueCat (subscription management), Google (sign-in, Play billing, Gemini document processing when you use AI import), Basiq (bank connections, only if you connect a bank), and Resend (delivering feedback emails). Each receives only the data needed for its function.</p>
+
+<h2>13. Children</h2>
+<p>Attiq is not directed at children under 13, and we do not knowingly collect data from them.</p>
+
+<h2>14. Your rights</h2>
+<p>Depending on where you live (including under the Australian Privacy Principles and the GDPR), you may have rights to access, correct, export, or delete your personal data. Contact us and we'll help.</p>
+
+<h2>15. Changes &amp; contact</h2>
+<p>We'll update this page when our practices change and revise the date above. Questions or requests: <a href="mailto:feedback@attiq.online">feedback@attiq.online</a>.</p>
+</body>
+</html>

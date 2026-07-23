@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Attiq — Delete Your Account &amp; Data</title>
+<style>
+  :root { color-scheme: light dark; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    max-width: 720px; margin: 0 auto; padding: 32px 20px 64px;
+    line-height: 1.6; color: #1a1a1a; background: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    body { color: #e8e8e8; background: #242424; }
+    a { color: #8ab4f8; }
+  }
+  h1 { font-size: 1.7rem; margin-bottom: 0.2em; }
+  h2 { font-size: 1.15rem; margin-top: 2em; }
+  .updated { opacity: 0.7; font-size: 0.9rem; }
+  .version { opacity: 0.55; font-size: 0.8rem; }
+  ol, ul { padding-left: 1.2em; }
+  table { border-collapse: collapse; width: 100%; margin-top: 0.5em; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid rgba(128,128,128,0.3); vertical-align: top; }
+</style>
+</head>
+<body>
+<h1>Delete Your Attiq Account &amp; Data</h1>
+<p class="updated">Last updated: 23 July 2026</p>
+<p class="version">Version 1.0</p>
+
+<p>This page explains how to delete your Attiq account and the data associated with it. It applies to the Attiq app published by Attiq (developer contact: <a href="mailto:feedback@attiq.online">feedback@attiq.online</a>).</p>
+
+<h2>Option 1 — Delete in the app (recommended)</h2>
+<ol>
+  <li>Open Attiq and go to the <strong>Profile</strong> tab.</li>
+  <li>To remove only the data stored on your device, tap <strong>Delete All Data</strong>.</li>
+  <li>To remove your account and any cloud-synced data, tap <strong>Delete Account</strong> and confirm.</li>
+</ol>
+<p>Deleting your account permanently removes your authentication record and any data backed up to our servers. This cannot be undone.</p>
+
+<h2>Option 2 — Request deletion by email</h2>
+<p>If you can no longer access the app, email <a href="mailto:feedback@attiq.online">feedback@attiq.online</a> from the email address associated with your account, with the subject line <strong>"Delete my account"</strong>. We may ask you to confirm ownership of the account before we proceed. We will action verified requests within 30 days.</p>
+
+<h2>What gets deleted</h2>
+<table>
+  <tr><th>Data</th><th>What happens</th></tr>
+  <tr><td>Local app data (transactions, budgets, goals, accounts, warranties, preferences)</td><td>Erased from your device via "Delete All Data", or by uninstalling the app.</td></tr>
+  <tr><td>Account record (email, display name, profile photo)</td><td>Permanently deleted from our authentication provider (Supabase).</td></tr>
+  <tr><td>Cloud backup / sync data</td><td>Permanently deleted from our database.</td></tr>
+  <tr><td>Bank connection (if you connected one)</td><td>Disconnected; associated CDR data is deleted or de-identified per our <a href="/cdr-policy">CDR Policy</a>.</td></tr>
+</table>
+
+<h2>What may be retained, and for how long</h2>
+<ul>
+  <li><strong>Subscription/payment records</strong> are held by Google Play or the Apple App Store, not by us. We keep an anonymised purchase identifier only as long as needed for subscription management and to meet legal and tax obligations.</li>
+  <li><strong>Backups and logs</strong> may retain residual copies for a short period as part of routine system backups before being overwritten, after which they are gone.</li>
+</ul>
+
+<h2>Guest mode</h2>
+<p>If you use Attiq without an account (guest mode), no account exists to delete and no data is stored on our servers. Uninstalling the app or using "Delete All Data" removes everything.</p>
+
+<h2>Contact</h2>
+<p>Questions about deletion: <a href="mailto:feedback@attiq.online">feedback@attiq.online</a>. See also our <a href="/privacy">Privacy Policy</a>.</p>
+</body>
+</html>

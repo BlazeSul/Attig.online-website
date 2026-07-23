@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Attiq — Security</title>
+<style>
+  :root { color-scheme: light dark; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    max-width: 760px; margin: 0 auto; padding: 32px 20px 64px;
+    line-height: 1.6; color: #1a1a1a; background: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    body { color: #e8e8e8; background: #242424; }
+    a { color: #8ab4f8; }
+    .card { background: #2e2e30; border-color: rgba(255,255,255,0.08); }
+    .flow-box { background: #2e2e30; border-color: rgba(255,255,255,0.14); }
+    .flow-box strong { color: #f2f2f2; }
+    .flow-box span { color: #cfcfcf; }
+    code { background: rgba(255,255,255,0.08); }
+  }
+  h1 { font-size: 1.7rem; margin-bottom: 0.2em; }
+  h2 { font-size: 1.2rem; margin-top: 2em; }
+  .updated { opacity: 0.7; font-size: 0.9rem; }
+  .version { opacity: 0.55; font-size: 0.8rem; }
+  .lead { font-size: 1.05rem; }
+  ul { padding-left: 1.2em; }
+  code { background: rgba(0,0,0,0.06); padding: 1px 5px; border-radius: 4px; font-size: 0.9em; }
+  .card { border: 1px solid rgba(0,0,0,0.1); border-radius: 12px; padding: 16px 18px; margin: 12px 0; }
+  .card h3 { margin: 0 0 6px; font-size: 1rem; }
+  .card p { margin: 0; opacity: 0.9; }
+  table { border-collapse: collapse; width: 100%; margin-top: 0.5em; font-size: 0.95rem; }
+  th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid rgba(128,128,128,0.3); vertical-align: top; }
+  /* data-flow diagram */
+  .flow { display: flex; flex-direction: column; gap: 10px; margin: 16px 0; }
+  .flow-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .flow-box { flex: 1 1 150px; min-width: 130px; border: 1px solid rgba(0,0,0,0.15); border-radius: 10px; padding: 10px 12px; background: #f6f6f6; }
+  .flow-box strong { display: block; font-size: 0.92rem; }
+  .flow-box span { font-size: 0.8rem; opacity: 0.75; }
+  .flow-arrow { font-size: 0.78rem; opacity: 0.7; text-align: center; }
+  .pill { display: inline-block; font-size: 0.72rem; padding: 2px 8px; border-radius: 999px; background: rgba(46,160,110,0.16); color: #1f8a5b; margin-top: 6px; }
+  @media (prefers-color-scheme: dark) { .pill { color: #56d39a; } }
+</style>
+</head>
+<body>
+<h1>Security at Attiq</h1>
+<p class="updated">Last updated: 23 July 2026</p>
+<p class="version">Version 1.0</p>
+
+<p class="lead">Attiq is built privacy-first. Your financial data lives on your device by default, we run no ads and no tracking, and where data is encrypted we tell you exactly how. This page describes our actual security model — not slogans.</p>
+
+<h2>Where your data lives</h2>
+<div class="flow">
+  <div class="flow-row">
+    <div class="flow-box"><strong>Your device</strong><span>Transactions, budgets, goals, accounts, receipts — stored locally</span><span class="pill">Default: on device only</span></div>
+  </div>
+  <div class="flow-arrow">▼ only if you opt in to Pro cloud backup ▼</div>
+  <div class="flow-row">
+    <div class="flow-box"><strong>Encrypted transport (TLS)</strong><span>Data protected in transit</span></div>
+    <div class="flow-box"><strong>Our database (Supabase)</strong><span>Encrypted at rest, access limited to your signed-in account</span></div>
+  </div>
+  <div class="flow-arrow">▼ only if you connect a bank (optional) ▼</div>
+  <div class="flow-row">
+    <div class="flow-box"><strong>Basiq (CDR accredited)</strong><span>You authorise your bank directly — Attiq never sees your bank login</span></div>
+  </div>
+</div>
+<p>In <strong>guest mode</strong>, nothing leaves your device and no account is required.</p>
+
+<h2>The specifics</h2>
+
+<div class="card">
+  <h3>Encrypted backups — end-to-end</h3>
+  <p>When you export a backup file, it is encrypted with <strong>AES-256-GCM</strong>. The key is derived from a password you choose using <strong>PBKDF2-HMAC-SHA256 with 210,000 iterations</strong> and a random 128-bit salt, with a random 96-bit nonce per backup. The password never leaves your device and is not stored anywhere — only you can decrypt the file. If you lose the password, no one (including us) can recover the backup. This is true end-to-end encryption.</p>
+</div>
+
+<div class="card">
+  <h3>App lock</h3>
+  <p>You can lock the app behind your device biometrics (fingerprint / Face ID / iris) or device PIN, with a configurable auto-lock timeout. Sensitive screens are blurred in the app switcher. Biometric data never leaves your device.</p>
+</div>
+
+<div class="card">
+  <h3>Session &amp; credential storage</h3>
+  <p>If you sign in, your session tokens are stored in the platform secure enclave — <strong>iOS Keychain</strong> or <strong>Android Keystore</strong> — not in general app storage. Tokens are cleared on sign-out. Passwords are handled by our authentication provider and are never visible to us.</p>
+</div>
+
+<div class="card">
+  <h3>On-device receipt scanning</h3>
+  <p>Receipt scanning runs entirely on your device using local text recognition (Google ML Kit). Receipt photos and their contents are never uploaded.</p>
+</div>
+
+<div class="card">
+  <h3>Bank connections</h3>
+  <p>Bank connections, where available, use Australia's Consumer Data Right through <strong>Basiq</strong>, an accredited data recipient. You authorise access directly with your bank; your banking credentials are never entered into or visible to Attiq, and access is read-only. See our <a href="/cdr-policy">CDR Policy</a>.</p>
+</div>
+
+<h2>Our encryption model, plainly</h2>
+<table>
+  <tr><th>Data</th><th>How it's protected</th><th>Who can read it</th></tr>
+  <tr><td>Local app data</td><td>Stored on device; app lock (biometric/PIN) gates access</td><td>You, on your unlocked device</td></tr>
+  <tr><td>Exported backup files</td><td>AES-256-GCM, key via PBKDF2-SHA256 (210k iterations)</td><td>Only you (password-holder) — true end-to-end</td></tr>
+  <tr><td>Session tokens</td><td>iOS Keychain / Android Keystore</td><td>You, on your device</td></tr>
+  <tr><td>Cloud backup / sync (Pro, opt-in)</td><td>Encrypted in transit (TLS) and at rest; access scoped to your account</td><td>You; our infrastructure provider stores the ciphertext at rest</td></tr>
+</table>
+
+<h2>What we don't do</h2>
+<ul>
+  <li>No advertising and no advertising identifiers.</li>
+  <li>No third-party analytics or tracking SDKs.</li>
+  <li>No selling or renting of your data — to anyone, ever.</li>
+</ul>
+
+<h2>Reporting a vulnerability</h2>
+<p>If you believe you have found a security issue, please email <a href="mailto:feedback@attiq.online">feedback@attiq.online</a> with details and steps to reproduce. We appreciate responsible disclosure and will respond as quickly as we can.</p>
+
+<p style="margin-top:2em;">See also our <a href="/privacy">Privacy Policy</a>, <a href="/terms">Terms of Service</a>, and <a href="/cdr-policy">CDR Policy</a>.</p>
+</body>
+</html>
