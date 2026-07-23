@@ -2,6 +2,9 @@ node_modules/
 .wrangler/
 RKStorage
 *.js
+!support.js
+!image-slot.js
+!functions/
 *.py
 package.json
 package-lock.json
